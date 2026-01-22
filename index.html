@@ -3,53 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <title>Manual Abstract Viewer</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
     }
+
     #login {
       max-width: 300px;
-      margin: 100px auto;
+      margin: 120px auto;
       text-align: center;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 6px;
     }
+
     #content {
       display: none;
     }
+
+    input[type="password"],
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
     table {
       border-collapse: collapse;
       width: 100%;
       margin-top: 20px;
     }
+
     th, td {
       border: 1px solid #ccc;
-      padding: 8px;
+      padding: 6px;
       text-align: left;
     }
+
     th {
-      background: #f0f0f0;
+      background: #f2f2f2;
     }
   </style>
 </head>
+
 <body>
 
-<!-- 🔐 비밀번호 화면 -->
-<div id="login">
-  <h3>Access Code</h3>
-  <input type="password" id="password" placeholder="비밀번호 입력" />
-  <br><br>
-  <button onclick="checkPassword()">Enter</button>
-</div>
+  <!-- 🔐 로그인 -->
+  <div id="login">
+    <h3>Access Code</h3>
+    <input type="password" id="password" placeholder="비밀번호 입력" />
+    <br><br>
+    <button id="loginBtn">Enter</button>
+  </div>
 
-<!-- 📊 데이터 표시 -->
-<div id="content">
-  <h2>Manual Abstract</h2>
-  <input type="text" id="filter" placeholder="검색어 입력" onkeyup="filterTable()" />
-  <table id="dataTable"></table>
-</div>
+  <!-- 📊 콘텐츠 -->
+  <div id="content">
+    <h2>Manual Abstract</h2>
+    <input
+      type="text"
+      id="filter"
+      placeholder="검색어 입력"
+      onkeyup="filterTable()"
+    />
+    <table id="dataTable"></table>
+  </div>
 
-<script>
-  /***********************
+  <!-- ✅ JS는 반드시 BODY 맨 아래 -->
+  <script>
+ /***********************
    * 🔴 니가 바꿀 부분 START
    ***********************/
   const API_KEY = "AIzaSyDLbseKzZPdRmMMfzfCtsNgzjREbx7eiEI🔴여기에_니_API_KEY";
@@ -60,5 +88,78 @@
    * 🔴 니가 바꿀 부분 END
    ***********************/
 
-  function checkPassword() {
-    const input = document.getElem
+    // 버튼 이벤트 연결
+    document
+      .getElementById("loginBtn")
+      .addEventListener("click", checkPassword);
+
+    function checkPassword() {
+      const input = document.getElementById("password").value;
+
+      if (input === ACCESS_PASSWORD) {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("content").style.display = "block";
+        loadData();
+      } else {
+        alert("비밀번호 틀림 ㅋㅋ");
+      }
+    }
+
+    async function loadData() {
+      const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`;
+
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (!data.values) {
+          alert("시트 데이터 없음");
+          return;
+        }
+
+        renderTable(data.values);
+      } catch (e) {
+        console.error(e);
+        alert("데이터 로드 실패");
+      }
+    }
+
+    function renderTable(rows) {
+      const table = document.getElementById("dataTable");
+      table.innerHTML = "";
+
+      rows.forEach((row, idx) => {
+        const tr = document.createElement("tr");
+
+        row.forEach(cell => {
+          const el = document.createElement(idx === 0 ? "th" : "td");
+          el.textContent = cell;
+          tr.appendChild(el);
+        });
+
+        table.appendChild(tr);
+      });
+    }
+
+    function filterTable() {
+      const keyword = document
+        .getElementById("filter")
+        .value
+        .toLowerCase();
+
+      const rows = document.querySelectorAll("#dataTable tr");
+
+      rows.forEach((row, idx) => {
+        if (idx === 0) return;
+
+        row.style.display = row.textContent
+          .toLowerCase()
+          .includes(keyword)
+          ? ""
+          : "none";
+      });
+    }
+  </script>
+
+</body>
+</html>
