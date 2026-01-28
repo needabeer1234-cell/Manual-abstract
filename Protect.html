@@ -226,7 +226,11 @@ function login() {
     return;
   }
 
-  const body = { action: 'login', password: pw };
+  // ⭐ action을 'login'으로 설정
+  const body = { 
+    action: 'login',
+    password: pw 
+  };
 
   fetch(WEBAPP_URL, {
     method: 'POST',
