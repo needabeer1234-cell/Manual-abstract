@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolsNet 8 통합 운영 가이드</title>
+    <title>ToolsNet 8 운영 가이드</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
@@ -15,7 +15,7 @@
     <header class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50 shadow-lg">
         <div class="max-w-6xl mx-auto px-6 py-4">
             <h1 class="text-2xl font-bold text-blue-400">ToolsNet 8 통합 운영 가이드</h1>
-            <p class="text-sm text-gray-400 mt-1">써드파티 연동 · HT50 접속 · 시스템 타입 식별 · 라이선스 관리</p>
+            <p class="text-sm text-gray-400 mt-1">써드파티 연동법 · HT50 접속법 · 시스템 타입 식별법 · 라이선스 관리</p>
         </div>
     </header>
 
@@ -55,7 +55,7 @@
         <section class="bg-gray-800 rounded-lg p-6 border border-gray-700">
             <div class="flex items-start mb-4">
                 <span class="bg-sky-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3">H</span>
-                <h2 class="text-xl font-bold text-sky-300">HT50 전용 접속 설정</h2>
+                <h2 class="text-xl font-bold text-sky-300">EH2-HT50접속 설정</h2>
             </div>
             <div class="ml-11 space-y-4">
                 
@@ -68,7 +68,7 @@
                         </div>
                         <div class="flex justify-between items-center bg-gray-800 p-2 rounded">
                             <span>EH2 PORT</span>
-                            <code class="bg-sky-900 text-sky-300 px-2 py-1 rounded">6575</code>
+                            <code class="bg-sky-900 text-sky-300 px-2 py-1 rounded">6575 or 기본값</code>
                         </div>
                         <div class="bg-red-900 bg-opacity-20 border border-red-700 rounded p-2 mt-2">
                             <span class="text-red-300 font-semibold">⚠️</span> 비표준 포트(6570, 9014) 사용 금지 - 헤더 파싱 오류 위험
@@ -82,23 +82,23 @@
                         <div class="bg-gray-800 p-3 rounded">
                             <div class="flex justify-between items-start mb-1">
                                 <span class="font-semibold">System Type</span>
-                                <span><code class="bg-sky-900 text-sky-300 px-2 py-1 rounded">42</code> 또는 <code class="bg-sky-900 text-sky-300 px-2 py-1 rounded">43</code></span>
+                                <span><code class="bg-sky-900 text-sky-300 px-2 py-1 rounded">43 or 42 or 3</code> </span>
                             </div>
-                            <p class="text-xs text-gray-500">42는 Focus61용이지만 경험상 성공확률 높음. 42 실패 시 43 시도</p>
+                            <p class="text-xs text-gray-100">42는 Focus61용이지만 경험상 성공확률 높음. 42 실패 시 43 or 3 시도</p>
                         </div>
                         <div class="bg-gray-800 p-3 rounded">
                             <div class="flex justify-between items-start mb-1">
                                 <span class="font-semibold">System Number</span>
-                                <span><code class="bg-sky-900 text-sky-300 px-2 py-1 rounded">90</code> (고유값)</span>
+                                <span><code class="bg-sky-900 text-sky-300 px-2 py-1 rounded">90(연번이나 테스타라면 큰값)</code> </span>
                             </div>
-                            <p class="text-xs text-gray-500">데이터 충돌 방지를 위해 큰 값 입력. System Type 내에서 기기를 고유하게 식별하는 4자리 번호</p>
+                            <p class="text-xs text-gray-100">데이터 충돌 방지를 위해 큰 값 입력. System Type 내에서 기기를 고유하게 식별하는 4자리 번호</p>
                         </div>
                         <div class="bg-gray-800 p-3 rounded">
                             <div class="flex justify-between items-start mb-1">
                                 <span class="font-semibold">Station Number</span>
                                 <span><code class="bg-sky-900 text-sky-300 px-2 py-1 rounded">90</code></span>
                             </div>
-                            <p class="text-xs text-gray-500">특정 작업 위치(스테이션)를 고유하게 식별하는 번호</p>
+                            <p class="text-xs text-gray-100">특정 작업 위치(스테이션)를 고유하게 식별하는 번호</p>
                         </div>
                         <div class="bg-amber-900 bg-opacity-20 border border-amber-700 rounded p-2 mt-2">
                             <span class="text-amber-300 font-semibold">⚠️</span> System / Station Number 중복 시 데이터 덮어쓰기 및 리포트 병합 오류 발생
@@ -133,33 +133,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="bg-gray-900 rounded-lg p-4 border border-sky-700">
-                    <h3 class="font-semibold text-sky-300 mb-3 text-base">4. 접속상태 체크리스트</h3>
-                    <div class="space-y-2 text-sm text-gray-300">
-                        <div class="flex justify-between items-center bg-gray-800 p-2 rounded">
-                            <span>통신 포트</span>
-                            <code class="bg-sky-900 text-sky-300 px-2 py-1 rounded">6575</code>
-                        </div>
-                        <div class="flex justify-between items-center bg-gray-800 p-2 rounded">
-                            <span>System Type</span>
-                            <span><code class="bg-sky-900 text-sky-300 px-2 py-1 rounded">42</code> (실패 시 <code class="bg-sky-900 text-sky-300 px-2 py-1 rounded">43</code> 시도)</span>
-                        </div>
-                        <div class="flex justify-between items-center bg-gray-800 p-2 rounded">
-                            <span>System / Station Number</span>
-                            <span>고유값 (예: <code class="bg-sky-900 text-sky-300 px-2 py-1 rounded">90</code>)</span>
-                        </div>
-                        <div class="flex justify-between items-center bg-gray-800 p-2 rounded">
-                            <span>Keep-alive</span>
-                            <span>MID 9999 활성화</span>
-                        </div>
-                        <div class="flex justify-between items-center bg-gray-800 p-2 rounded">
-                            <span>Error 모니터링</span>
-                            <span>MID 0004 주기적 확인</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
 
@@ -167,7 +140,7 @@
         <section class="bg-gray-800 rounded-lg p-6 border border-gray-700">
             <div class="flex items-start mb-4">
                 <span class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3">1</span>
-                <h2 class="text-xl font-bold text-blue-300">통신 아키텍처</h2>
+                <h2 class="text-xl font-bold text-blue-300">툴스넷상 보이는 구조</h2>
             </div>
             <div class="ml-11 space-y-3 text-gray-300">
                 <div class="bg-gray-900 border border-gray-600 rounded-lg p-4">
@@ -255,7 +228,7 @@
         <section class="bg-gray-800 rounded-lg p-6 border border-gray-700">
             <div class="flex items-start mb-4">
                 <span class="bg-cyan-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3">4</span>
-                <h2 class="text-xl font-bold text-cyan-300">세션 유지 전략</h2>
+                <h2 class="text-xl font-bold text-cyan-300">세션 유지</h2>
             </div>
             <div class="ml-11 space-y-3 text-gray-300 text-sm">
                 <div class="grid grid-cols-2 gap-3">
@@ -330,6 +303,11 @@
                     <p>NIC Teaming 사용 시 MAC 주소 인식 불가 → License Failure 발생 가능</p>
                 </div>
             </div>
+        <h2 class="text-xl font-bold text-amber-300 mt-4">Unit Monitoring    
+        <img src="image/toolsnet unit monitoring.jpg" alt="">
+        <h2 class="text-xl font-bold text-amber-300 mt-4">Command center / Data Collection Classic / Connected Cotrollers
+        <img src="image/data collection classic.jpg" alt=""></h2>
+
         </section>
 
         <!-- Section 7 -->
