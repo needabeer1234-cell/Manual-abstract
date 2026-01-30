@@ -18,7 +18,6 @@
             <p class="text-sm text-gray-400 mt-1">써드파티 연동법 · HT50 접속법 · 시스템 타입 식별법 · 라이선스 관리</p>
         </div>
     </header>
-
     <!-- Google Translate Styles -->
     <style>
          .goog-te-banner-frame { display: none !important; }
@@ -26,18 +25,12 @@
          body { top: 0 !important; }
          body.translated { top: 0 !important; }
          iframe.goog-te-banner-frame { display: none !important; }
-         .skiptranslate iframe { display: none !important; }
         #google_translate_element {
                 background: rgba(227, 219, 219, 0.1);
                     padding: 0px;
-                        border-radius: 8px;
+                        border-radius: 1px;
                             border: 1px solid rgba(203, 209, 219, 0.3);
-                                max-width: auto;  /* 이 줄 추가 */
-}
         .goog-te-gadget { font-family: 'Noto Sans KR', sans-serif !important; color: #e5e7eb !important; }
-        .goog-te-gadget-simple { background-color: transparent !important; border: none !important; padding: 4px !important; font-size: 14px !important; }
-        .goog-te-menu-value span { color: #e5e7eb !important; }
-        .goog-te-gadget-icon { display: none !important; }
     </style>
 
     <main class="max-w-6xl mx-auto px-6 py-8 space-y-6">
@@ -87,14 +80,14 @@
                         <div class="bg-gray-800 p-3 rounded">
                             <div class="flex justify-between items-start mb-1">
                                 <span class="font-semibold">System Type</span>
-                                <span><code class="bg-sky-900 text-sky-300 px-2 py-1 rounded">43 or 42 or 3</code> </span>
+                                <span><code class="bg-sky-900 text-sky-300 px-2 py-1 rounded">42 or 43 or 3</code> </span>
                             </div>
-                            <p class="text-xs text-gray-100">42는 Focus61용이지만 경험상 성공확률 높음. 42 실패 시 43 or 3 시도</p>
+                            <p class="text-xs text-gray-100">43은 툴스넷8 오픈프로토콜 사양서상, 에스틱. 42는 Focus61용이지만 경험상 성공확률 높음. 43 실패 시 42 or 3 시도</p>
                         </div>
                         <div class="bg-gray-800 p-3 rounded">
                             <div class="flex justify-between items-start mb-1">
                                 <span class="font-semibold">System Number</span>
-                                <span><code class="bg-sky-900 text-sky-300 px-2 py-1 rounded">90(연번이나 테스타라면 큰값)</code> </span>
+                                <span><code class="bg-sky-900 text-sky-300 px-2 py-1 rounded">90(연번이나 연결 테스트라면 큰값 입력)</code> </span>
                             </div>
                             <p class="text-xs text-gray-100">데이터 충돌 방지를 위해 큰 값 입력. System Type 내에서 기기를 고유하게 식별하는 4자리 번호</p>
                         </div>
@@ -489,7 +482,7 @@
             new google.translate.TranslateElement({
                 pageLanguage: 'ko',
                 includedLanguages: 'ko,en,ja,zh-CN,zh-TW,vi,th',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
                 autoDisplay: false
             }, 'google_translate_element');
         }
