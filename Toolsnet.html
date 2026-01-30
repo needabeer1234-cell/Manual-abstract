@@ -36,17 +36,9 @@
     <main class="max-w-6xl mx-auto px-6 py-8 space-y-6">
 
         <!-- Language Selector -->
-        <div class="bg-gray-800 rounded-lg p-6 border border-blue-700">
-            <div class="space-y-4">
-                <div class="flex items-center gap-3">
-                    <span class="text-2xl">🌐</span>
-                    <div>
-                        <h3 class="text-lg font-bold text-blue-300">언어 선택 / Language / 言語選択</h3>
-                        <p class="text-lg text-gray-100">Google 번역으로 다른 언어로 보기</p>
-                    </div>
-                </div>
-                <div id="google_translate_element"></div>
-            </div>
+         <div class="language-selector">
+            <div class="lang-info">💡 Language Change(言語変換) </div>
+            <div id="google_translate_element"><div class="skiptranslate goog-te-gadget" dir="ltr" style=""><div id=":0.targetLanguage" class="goog-te-gadget-simple" style="white-space: nowrap;"><img src="./HT50 ToolsNet 접속 가이드_files/cleardot.gif" class="goog-te-gadget-icon" alt="" style="background-image: url(&quot;https://translate.googleapis.com/translate_static/img/te_ctrl3.gif&quot;); background-position: -65px 0px;"><span style="vertical-align: middle;"><a aria-haspopup="true" class="VIpgJd-ZVi9od-xl07Ob-lTBxed" href="https://needabeer1234-cell.github.io/w/Toolsnet.html#"><span>Select Language</span><img src="./HT50 ToolsNet 접속 가이드_files/cleardot.gif" alt="" width="1" height="1"><span style="border-left: 1px solid rgb(187, 187, 187);">​</span><img src="./HT50 ToolsNet 접속 가이드_files/cleardot.gif" alt="" width="1" height="1"><span aria-hidden="true" style="color: rgb(118, 118, 118);">▼</span></a></span></div></div></div>
         </div>
 
         <!-- Section HT50 -->
@@ -478,15 +470,21 @@
         });
 
         // Google Translate
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
+     <script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            {
                 pageLanguage: 'ko',
-                includedLanguages: 'ko,en,ja,zh-CN,zh-TW,vi,th',
-                layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+                includedLanguages: 'ko,en,ja',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
                 autoDisplay: false
-            }, 'google_translate_element');
-        }
+            },
+            'google_translate_element'
+        );
+    }
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
